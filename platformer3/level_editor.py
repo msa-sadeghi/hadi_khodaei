@@ -19,12 +19,19 @@ current_tile = 0
 LOWER_MARGIN = 100
 SIDE_MARGIN = 300
 
-
+level = 0
 scroll_left = False
 scroll_right = False
 scroll = 0
 scroll_speed = 1
 
+world_data = []
+for row in range(ROWS):
+    r = [-1] * MAX_COL
+    world_data.append(r)
+
+for tile in range(MAX_COL):
+    world_data[-1][tile] = 0
 
 screen = pygame.display.set_mode((SCREEN_WIDTH+SIDE_MARGIN, SCREEN_HEIGHT + LOWER_MARGIN))
 pygame.display.set_caption("Level_editor")
@@ -33,6 +40,21 @@ pine1_img = pygame.image.load("img/background/pine1.png")
 pine2_img = pygame.image.load("img/background/pine2.png")
 mountain_img = pygame.image.load("img/background/mountain.png")
 sky_img = pygame.image.load("img/background/sky_cloud.png")
+
+save_img = pygame.image.load("img/save.png")
+load_img = pygame.image.load("img/load.png")
+
+
+font = pygame.font.SysFont("arial", 22)
+
+
+def draw_text(text, font, color, x,y):
+    t = font.render(text, True, color)
+    screen.blit(t, (x,y))
+
+save_button = Button(SCREEN_WIDTH /2, SCREEN_HEIGHT + LOWER_MARGIN - 60, save_img , 1)
+load_button = Button(SCREEN_WIDTH/2 + 250, SCREEN_HEIGHT + LOWER_MARGIN - 60, load_img, 1)
+
 
 
 img_list = []
@@ -70,7 +92,11 @@ def darw_grid():
         pygame.draw.line(screen, (255,255,255), (0, i * TILE_SIZE), (SCREEN_WIDTH, i * TILE_SIZE ))
 
 
-
+def draw_world():
+    for i in range(len(world_data)):
+        for j in range(len(world_data[i])):
+            if world_data[i][j] >= 0:
+                screen.blit(img_list[world_data[i][j]], (j * TILE_SIZE -scroll, i * TILE_SIZE))
 
 
 running = True
@@ -86,6 +112,10 @@ while running:
                 scroll_right = True
             if event.key == pygame.K_RSHIFT:
                 scroll_speed = 5 
+            if event.key == pygame.K_UP:
+                level += 1
+            if event.key == pygame.K_DOWN and level > 0:
+                level -= 1
 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT:
@@ -97,17 +127,53 @@ while running:
 
     if scroll_left and scroll >0:
         scroll -= 5 * scroll_speed
-    if scroll_right:
+    if scroll_right and scroll < MAX_COL * TILE_SIZE - SCREEN_WIDTH:
         scroll += 5 * scroll_speed
     
+    pos = pygame.mouse.get_pos()
+    x = (pos[0] + scroll) // TILE_SIZE
+    y = pos[1] // TILE_SIZE
+
+    if pos[0] < SCREEN_WIDTH and pos[1] < SCREEN_HEIGHT:
+        if pygame.mouse.get_pressed()[0]:
+            if world_data[y][x] != current_tile:
+                world_data[y][x] = current_tile
+        if pygame.mouse.get_pressed()[2]:
+            world_data[y][x] = -1
+
+    # save and load button click event handlers
+    # save level world data into csv and pickle file and load the data
+
     draw_bg()
     darw_grid()
+    draw_world()
+    draw_text(f"level: {level}", font, (255,255,255), 10, SCREEN_HEIGHT + LOWER_MARGIN - 100)
+    draw_text(f"Press Up or Down to change level", font, (255,255,255), 10, SCREEN_HEIGHT + LOWER_MARGIN - 60)
     pygame.draw.rect(screen, (20, 255, 10), (SCREEN_WIDTH,0, SIDE_MARGIN, SCREEN_HEIGHT))
     for i in range(len(button_list)):
         if button_list[i].draw(screen):
             current_tile = i
-    print("tile # ", current_tile)
     pygame.draw.rect(screen, (255,0,0), button_list[current_tile].rect, 3)
+    if save_button.draw(screen):
+        # with open(f"levels\level{level}.csv", 'w', newline='') as csv_file:
+        #     w = csv.writer(csv_file, delimiter=',')
+        #     for row in world_data:
+        #         w.writerow(row)
+        f = open(f"levels\level{level}", 'wb')
+        pickle.dump(world_data, f)
+        f.close()
+    if load_button.draw(screen):
+        scroll = 0
+        # with open(f"levels\level{level}.csv","r", newline='') as csv_file:
+        #     reader = list(csv.reader(csv_file, delimiter=','))
+        #     for i in range(len(reader)):
+        #         for j in range(len(reader[i])):
+        #             world_data[i][j] = int(reader[i][j])
+
+        world_data = []
+        f = open(f"levels\level{level}", 'rb')
+        world_data = pickle.load(f)
+
 
     pygame.display.update()
     clock.tick(FPS)
