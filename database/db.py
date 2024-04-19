@@ -45,19 +45,46 @@ create_table("products",
              field_2="product_price",
              )
 
-
-def insert_into_table(table_name, **kwargs):
-    all_fields = list(kwargs.items())
-    print(all_fields)
-    con = sqlite3.connect("online_shop.db")
+def open_connection_to_db(db_name):
+    con = sqlite3.connect(db_name)
     cursor = con.cursor()
+    return con, cursor
+    
+
+def insert_into_table(table_name,con, cursor, **kwargs):
+    all_fields = list(kwargs.items())
+   
     vals = ""
     query = f"INSERT INTO {table_name} ("
     for tup in all_fields:
         query += tup[0] + ","
-        vals += str(tup[1])
+        vals += '"' + str(tup[1])  + '"' + ","
+    vals = vals[:-1]
     query = query[:-1] + ") " + "VALUES ("
-    print(query)
-    print(vals)
+    query += vals + ")" 
+    cursor.execute(query)
+    con.commit()   
+
+def search_from_table(table_name,**kwargs):
+    con = sqlite3.connect("online_shop.db")
+    all_fields = list(kwargs.items())
+    cursor = con.cursor()
+    query = f"""SELECT * from {table_name} WHERE """
+    for field in all_fields:
+        query += field[0] + "="  +'"' + field[1] + '"' + " and "
+    else:
+        query = query[:-5]
+    qs = list(cursor.execute(query))
+    return qs
     
-insert_into_table("products", product_name="blalalal", product_price=1234)
+    
+def show_all_records(table_name):
+    con = sqlite3.connect("online_shop.db")
+   
+    cursor = con.cursor()
+    query = f"""SELECT * from {table_name}"""
+    qs = list(cursor.execute(query))
+    return qs
+    
+def delete_from_table(table_name, records):
+    pass
