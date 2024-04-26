@@ -76,8 +76,37 @@ def search_from_table(table_name,**kwargs):
         query = query[:-5]
     qs = list(cursor.execute(query))
     return qs
+ 
+def delete_from_table(table_name, id):
+    res = None
+    try:
+        con = sqlite3.connect("online_shop.db")
+        cursor = con.cursor()
+        query = f"DELETE FROM {table_name} WHERE id={id}"
+        cursor.execute(query)
+        con.commit()
+        res = "SUCCESS"
+    except sqlite3.DatabaseError as er:
+        res = "FAILURE"
+    finally:
+        con.close()
+    return res
     
+def update_product(table_name, **kwargs):
+    name = input("enter product new name: ")
+    price = input("enter product new price: ")
+    info = list(kwargs.items())
+    con, cursor = open_connection_to_db("online_shop.db")
+    query = f'UPDATE {table_name} SET product_name="{name}", product_price="{price}" WHERE product_name="{info[0][1]}" AND product_price="{info[1][1]}"'
+    print(query)
+    try:
+        cursor.execute(query)
+        con.commit()
+    except sqlite3.DatabaseError as err:
+        print(err)
+        
     
+   
 def show_all_records(table_name):
     con = sqlite3.connect("online_shop.db")
    
@@ -85,6 +114,3 @@ def show_all_records(table_name):
     query = f"""SELECT * from {table_name}"""
     qs = list(cursor.execute(query))
     return qs
-    
-def delete_from_table(table_name, records):
-    pass
