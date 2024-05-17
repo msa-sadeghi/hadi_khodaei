@@ -53,7 +53,11 @@ def open_connection_to_db(db_name):
 
 def insert_into_table(table_name,con, cursor, **kwargs):
     all_fields = list(kwargs.items())
-   
+    print("****************************,insert_into_table ")
+    print(table_name)
+    print(con)
+    print(cursor)
+    print(all_fields)
     vals = ""
     query = f"INSERT INTO {table_name} ("
     for tup in all_fields:
@@ -114,3 +118,7 @@ def show_all_records(table_name):
     query = f"""SELECT * from {table_name}"""
     qs = list(cursor.execute(query))
     return qs
+
+
+def hi(n1,n2,n3,n4):
+    print(n1,n2,n3,n4)
