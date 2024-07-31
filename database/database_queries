@@ -1,0 +1,50 @@
+USE online_shop;
+-- INSERT INTO user values(
+-- "sara","sabouri",date("2023-02-02"),"tehran","091200000",
+-- "msai@gmail.com", "12345",1,1,1
+-- )
+INSERT INTO user  values(DEFAULT,
+"matin","sabouri",date("2023-02-02"),"tehran","091200000",
+"msai@gmail.com", "12345",1,1,1
+)
+
+
+use online_shop;
+-- alter table user drop foreign key user_ibfk_3; 
+-- alter table user drop index credit_card_id;
+
+-- alter table user add FOREIGN KEY (credit_card_id) REFERENCES creditcard (id)
+
+SELECT * FROM online_shop.user
+
+
+use online_shop;
+select * from cardtype;
+insert into cardtype values (DEFAULT,"banki")
+
+
+ use online_shop;
+-- ALTER TABLE user 
+-- DROP credit_card_id
+
+-- ALTER TABLE online_shop.creditcard
+-- ADD user_id int,
+-- ADD Foreign Key (user_id) REFERENCES user(id)
+
+
+SELECT  * FROM online_shop.product;
+-- INSERT INTO `online_shop`.`branch` (`name`, `city_id`, `phone_number`, `address`, `open_time`, `close_time`) VALUES ('number1', '1', '021000000000000', 'kh enghelab', '09', '24');
+
+-- ALTER TABLE branch add column open_time varchar(2),
+-- add column close_time varchar(2);
+
+
+-- SELECT * FROM online_shop.stockproduct;
+-- INSERT INTO online_shop.stockproduct(stock_id, product_id, quantity)
+-- VALUES (1,3,45);
+-- INSERT INTO online_shop.stockproduct(stock_id, product_id, quantity)
+-- VALUES (2,3,30);
+-- INSERT INTO online_shop.stockproduct(stock_id, product_id, quantity)
+-- VALUES (3,3,14)
+
+-- UPDATE online_shop.stockproduct set quantity = 10 where stock_id = 1
