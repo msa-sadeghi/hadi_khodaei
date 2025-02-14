@@ -31,7 +31,8 @@ class Handler:
             print("iNvalid input")
             self.run()
             
-        for item in switch.manager.get(floor = 3, price_per_meter=100):
+        for item in switch.manager.search(area__max=200):
+            print("inside for loop ->>>>>>>>>>>>>>>>>>>>>>")
             item.show_detail()
         self.run()
     

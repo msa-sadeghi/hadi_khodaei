@@ -63,7 +63,21 @@ def create_samples():
                         price_per_meter=100,
                         discountable=False,
                         convertable=True,
-                        area=300,
+                        area=100,
+    )
+    apartment_sell2 = ApartmentSell(
+                        has_elevator=True,
+                        has_parking=True,
+                        floor=3,
+                        user=User.object_list[0],
+                        build_year=1402,
+                        region=reg1,
+                        rooms_count=2,
+                        address="Tehran...",
+                        price_per_meter=100,
+                        discountable=True,
+                        convertable=True,
+                        area=200,
     )
     apartment_sell2 = ApartmentSell(
                         has_elevator=True,
@@ -78,6 +92,20 @@ def create_samples():
                         discountable=True,
                         convertable=True,
                         area=300,
+    )
+    apartment_sell2 = ApartmentSell(
+                        has_elevator=True,
+                        has_parking=True,
+                        floor=3,
+                        user=User.object_list[0],
+                        build_year=1402,
+                        region=reg1,
+                        rooms_count=2,
+                        address="Tehran...",
+                        price_per_meter=100,
+                        discountable=True,
+                        convertable=True,
+                        area=80,
     )
     apartment_rent1 = ApartmentRent(
                         has_elevator=True,
