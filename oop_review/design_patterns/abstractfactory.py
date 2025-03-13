@@ -13,10 +13,18 @@ class DetailBase(ABC):
     def show(self):
         pass
 class RugsDetail(DetailBase):
-    pass
+    def __init__(self, rugs):
+        self.rugs = rugs
+    
+    def show(self):
+        return f"rugs detail: {self.rugs._name}"
 
 class RugsPrice(DetailBase):
-    pass
+    def __init__(self, rugs):
+        self.rugs = rugs
+    
+    def show(self):
+        return f"rugs detail: {self.rugs._price}"
 
 
 class Rugs(ProductBase):
@@ -26,10 +34,10 @@ class Rugs(ProductBase):
         
     @property
     def detail(self):
-        pass
+        return RugsDetail(self)
     @property
     def price(self):
-        pass
+        return RugsPrice(self)
     
  
 def Mobile(ProductBase):
@@ -43,3 +51,13 @@ def Mobile(ProductBase):
     @property
     def price(self):
         pass
+
+
+
+if __name__ == '__main__':
+    r1 = Rugs("Persian rugs1", 3000)
+    r2 = Rugs("Persian rugs2", 6000)
+
+    for product in [r1, r2]:
+        print(product.detail.show())
+        print(product.price.show())
