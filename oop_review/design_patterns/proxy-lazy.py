@@ -30,5 +30,5 @@ if __name__ == "__main__":
     print(mongo.connect())
 
 
-#https://refactoring.guru/design-patterns/proxy
-#https://www.geeksforgeeks.org/lazy-loading-design-pattern/
+# https://refactoring.guru/design-patterns/proxy
+# https://www.geeksforgeeks.org/lazy-loading-design-pattern/
