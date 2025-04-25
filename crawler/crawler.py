@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 from config import BASE_LINK
 from abc import ABC, abstractmethod
 import json
+from parser_ import AdvertisementPageParser
 
 class CrawlerBase(ABC):
     @abstractmethod
@@ -75,9 +76,11 @@ class DataCrawler(CrawlerBase):
     def start(self):
         for link in self.links:
             response = self.get(link)
-            print(response.text)
-            # TODO ADD PARSER
+            
+            adv_page_parser = AdvertisementPageParser()
+            data = adv_page_parser.parse(response.text)
+            self.store(data)
 
     def store(self, data):
-        with open('pages_data.json', 'w') as f:
+        with open('pages_data.json', 'a') as f:
             f.write(json.dumps(data))
