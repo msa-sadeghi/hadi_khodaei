@@ -1,11 +1,24 @@
 import requests
 from bs4 import BeautifulSoup
-from config import BASE_LINK
+from config import BASE_LINK, STORAGE_TYPE
 from abc import ABC, abstractmethod
 import json
 from parser_ import AdvertisementPageParser
+from storage import MongoStorage, FileStorage
 
 class CrawlerBase(ABC):
+
+    def __init__(self):
+        self.storage = self.__set_storage()
+    @staticmethod
+    def __set_storage():
+        if STORAGE_TYPE == 'mongo':
+            return MongoStorage()
+        elif STORAGE_TYPE == 'file':
+            return FileStorage()
+        else:
+            raise ValueError('Invalid storage type')
+
     @abstractmethod
     def start(self):
         pass
@@ -26,6 +39,7 @@ class CrawlerBase(ABC):
 
 class LinkCrawler(CrawlerBase):
     def __init__(self, cities, link=BASE_LINK):
+        super().__init__()
         self.cities = cities
         self.link = link
     
@@ -62,6 +76,7 @@ class LinkCrawler(CrawlerBase):
 
 class DataCrawler(CrawlerBase):
     def __init__(self):
+        super().__init__()
         self.links = self.__load_links()
 
 
@@ -79,8 +94,10 @@ class DataCrawler(CrawlerBase):
             
             adv_page_parser = AdvertisementPageParser()
             data = adv_page_parser.parse(response.text)
+            
             self.store(data)
 
     def store(self, data):
-        with open('pages_data.json', 'a') as f:
-            f.write(json.dumps(data))
+        self.storage.store(data, 'advertisements')
+
+        
