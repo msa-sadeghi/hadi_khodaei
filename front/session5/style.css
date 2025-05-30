@@ -1,0 +1,79 @@
+@import url(../template_core.css);
+
+.sample {
+  height: 100px;
+}
+.circles {
+  padding: 10px;
+  overflow: auto;
+}
+
+.circles .circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  float: left;
+  margin-right: 10px;
+}
+.circles :nth-child(1) {
+  background-color: var(--red-color);
+}
+.circles :nth-child(2) {
+  background-color: orange;
+}
+.circles :nth-child(3) {
+  background-color: green;
+}
+
+.hero-header {
+  display: flex;
+  justify-content: space-between;
+}
+.hero-header > div {
+  margin: 20px;
+}
+
+.text-section p {
+  margin: 10px 0;
+}
+
+.text-section .buttons {
+  text-align: center;
+}
+
+.text-section .buttons > input {
+  padding: 5px 15px;
+  margin: 2px;
+  cursor: pointer;
+  transition: 0.2s linear;
+}
+.text-section .buttons > input:hover {
+  opacity: 60%;
+}
+.text-section .buttons > input:first-child {
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+.text-section .buttons > input:last-child {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 600px) {
+  .hero-header {
+    display: block;
+    position: relative;
+  }
+  .hero-header > div {
+    margin: 20px;
+    position: absolute;
+  }
+  .hero-header > div.image-section {
+    z-index: -1;
+    filter: blur(1px) opacity(30%);
+  }
+}
