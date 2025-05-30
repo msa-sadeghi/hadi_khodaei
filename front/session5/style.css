@@ -28,6 +28,8 @@
 .hero-header {
   display: flex;
   justify-content: space-between;
+  min-height: 200px;
+  margin-bottom: 20px;
 }
 .hero-header > div {
   margin: 20px;
@@ -67,13 +69,53 @@
   .hero-header {
     display: block;
     position: relative;
+    
   }
   .hero-header > div {
     margin: 20px;
     position: absolute;
+    top: 0;
+    left: 0;
   }
   .hero-header > div.image-section {
     z-index: -1;
     filter: blur(1px) opacity(30%);
   }
+}
+nav{
+  border-top-left-radius: 12px 20px;
+  border-top-right-radius: 12px 20px;
+  border-bottom-left-radius: 12px 20px;
+  border-bottom-right-radius: 12px 20px;
+}
+nav.container ul{
+  list-style: none;
+  text-align: center;
+}
+nav.container ul li{
+  padding: 10px;
+  display: inline;
+  line-height: 40px;
+}
+nav.container ul li a{
+  text-decoration: none;
+}
+
+.container aside ul{
+  list-style: none;
+  border-radius: 3px;
+  padding: 10px;
+}
+
+.container aside ul li{
+  background-color: antiquewhite;
+  min-height: 50px;
+  
+}
+.container aside ul li:not(:last-child){
+  margin-bottom: 10px;
+  
+}
+.products > div{
+  
 }

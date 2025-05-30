@@ -14,13 +14,15 @@
 }
 .bg-gray{
     background-color: var(--gray-color);
+  
 }
 
 .container-fluid{
     width: 100%;
 }
 .container{
-    max-width: 1200px;
+    max-width: 1200px !important;
+  
     margin: 10px auto;
 }
 
@@ -28,7 +30,13 @@
     width: 100%;
     display: block;
 }
-
+.row{
+    
+}
+[class^="col-"]{
+    float: left;
+    padding: 10px;
+}
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
 
