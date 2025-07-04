@@ -37,6 +37,12 @@
     float: left;
     padding: 10px;
 }
+
+.card{
+    border: 1px solid brown;
+    border-radius: 5px;
+    padding: 15px;
+}
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
 

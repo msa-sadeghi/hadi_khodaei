@@ -1,0 +1,138 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #d8e0e5;
+}
+
+p.title{
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 36px;
+}
+
+.slideshow-wrapper{
+    width: 640px;
+    height: 320px;
+    margin: auto;
+    border: 12px solid #efefef;
+    margin-top: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+    position: relative;
+}
+.image-responsive{
+    width: 100%;
+}
+
+.slideshow-inner{
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    position: relative;
+    overflow: hidden;
+}
+
+.slideshow-inner ul{
+    list-style: none;
+    height: 100%;
+    width: 500%;
+    overflow: hidden;
+    position: relative;
+    left: 0;
+}
+
+.slideshow-inner ul > li{
+    width: 20%;
+    height: 320px;
+    float: left;
+    position: relative;
+}
+
+.slideshow-inner ul > li > img{
+    width: 100%;
+    height: auto;
+    margin: auto;
+    display: block;
+}
+
+.slideshow-wrapper label:not(.show-description-label){
+    position: absolute;
+    left: 50%;
+    bottom: -45px;
+    border-radius: 50%;
+    background-color: rgba(200, 200, 200, 1);
+    z-index: 100;
+    width: 12px;
+    height: 12px;
+}
+
+.slideshow-wrapper label[for=button1]{
+    margin-left: -40px;
+}
+.slideshow-wrapper label[for=button2]{
+    margin-left: -20px;
+}
+
+.slideshow-wrapper #button1:checked ~ .slideshow-inner > ul{
+    left: 0;
+}
+.slideshow-wrapper #button2:checked ~ .slideshow-inner > ul{
+    left: -100%;
+}
+.slideshow-wrapper #button3:checked ~ .slideshow-inner > ul{
+    left: -200%;
+}
+
+.slideshow-wrapper #button1:checked ~ label[for=button1]{
+    background-color: green;
+}
+.slideshow-wrapper #button2:checked ~ label[for=button2]{
+    background-color: green;
+}
+.slideshow-wrapper #button3:checked ~ label[for=button3]{
+    background-color: green;
+}
+
+.description{
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: white;
+    width: 260px;
+    z-index: 1000;
+}
+.description input{
+    visibility: hidden;
+}
+
+.description label{
+    background-color: white;
+    position: relative;
+    left: -17px;
+    top: 0;
+    width: 40px;
+    height: 26px;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    color: black;
+    border-radius: 0 0 15px 0;
+}
+
+.slideshow-wrapper input[type=radio]{
+    display: none;
+}
+.description-text{
+    position: absolute;
+    top: 50px;
+    opacity: 0;
+    color: red;
+}
+.description:hover ~ .description-text{
+    
+    opacity: 1;
+}

@@ -1,0 +1,43 @@
+img{
+    position: absolute;
+    transition: all 1s ease;
+    z-index: 1;
+}
+input[type="checkbox"]{
+    display: none;
+}
+input[type="checkbox"]:checked ~ label img.close{
+    display: block;
+}
+input[type="checkbox"]:checked ~ label img.burger{
+    display: none;
+}
+.close{
+    right: 0;
+    top: 0;
+    display: none;
+}
+.burger{
+    left: 0;
+}
+
+.menu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100vw;
+    height: 100vh;
+    background-color: tomato;
+    /* transform: translateX(-100%);  */
+    opacity: 0;
+    /* display: none; */
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    
+}
+
+input[type="checkbox"]:checked ~ .menu{
+   /* transform: translateX(0);*/
+    opacity: 1; 
+   
+}

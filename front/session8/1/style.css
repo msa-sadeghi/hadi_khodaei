@@ -1,0 +1,44 @@
+*{padding: 0;
+margin: 0;
+box-sizing: border-box;
+}
+.hero{
+    background-color: rebeccapurple;
+    padding: 20px;
+    height: 200px;
+    color: white;
+}
+.hero div.nav{
+    display: flex;
+    justify-content: space-between;
+}
+ul{
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+.hero div:not(:first-child){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 40px;
+    gap: 20px;
+}
+.products{
+    margin-top: 30px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+}
+.product{
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+
+.image-responsive{
+    width: 100%;
+}
