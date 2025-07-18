@@ -1,0 +1,115 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    width: 100%;
+}
+main{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    /* overflow: hidden; */
+}
+aside{
+    height: 100%;
+    width: 100%;
+}
+.aside-section{
+    /* direction: rtl; */
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.aside-left{
+    
+    width: 40%;
+    left: 0;
+    background-color: pink;
+    position: relative;
+    /* transform: translateY(-100%);  */
+    display: none; 
+    transition: tranform 0.4s ease-in-out;
+   
+}
+.aside-right{
+    width: 100%; 
+    height: 100%;
+    left: 0;
+    background-color: lightblue;
+    list-style: none;
+    /* margin-top: 150px; */
+    padding-left: 50px;
+    padding-right: 72px;
+    display: flex;
+    align-items: center;
+    transition: tranform 0.4s ease-in-out;
+    /* transform: translateX(100%); */
+    position: relative;
+}
+.aside-content li {
+    list-style: none;
+    margin-top: 20px;
+    font-size: 20px;
+    
+}
+.aside-content li a{
+    color: white;
+    text-decoration: none;
+    position: relative;
+    
+    /* margin-bottom: 10px; */
+    
+}
+.aside-content li a::after{
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    content: '';
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 3px;
+    
+    
+}
+.aside-content li a::before{
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    content: '';
+    height: 3px;
+    width: 50%;
+    background-color: red;
+    z-index: 1;
+    border-radius: 3px;
+    transition: transform .2s ease-in-out;
+}
+
+a:hover::before{
+    transform: translateX(100%);
+}
+
+input[type="checkbox"]{
+    display: none;
+}
+
+label[for=myInput]{
+    position: absolute;
+    top: 0;
+    z-index: 1;
+}
+
+.aside-left .aside-content{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
