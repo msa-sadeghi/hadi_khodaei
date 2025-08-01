@@ -39,7 +39,7 @@ body, html{
 .submenu{
     background-color: #273057;
     overflow: hidden;
-    /* max-height : 0; */
+    max-height : 200px;
     transition: max-height .8s ease;
 }
 
@@ -55,5 +55,57 @@ body, html{
 }
 
 .submenu a::before{
-    /* TODo /*
+   content: '';
+   opacity: 0;
+   transition: opacity .3s;
 }
+.submenu a:hover::before{
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 0;
+   
+    left: 0;
+    top: 0;
+    opacity: 1;
+    border-top: 24px solid transparent;
+    border-left: 11px solid #e7e5d9;
+    border-bottom: 24px solid transparent; 
+}
+
+.submenu a::after{
+   content: '';
+   opacity: 0;
+   transition: opacity .3s;
+}
+.submenu a:hover::after{
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 0;
+    right: 0;
+    top: 0;
+    opacity: 1;
+    border-top: 24px solid transparent;
+    border-right: 11px solid #e7e5d9;
+    border-bottom: 24px solid transparent;
+}
+
+
+.submenu a:hover{
+    background-color: #273057;
+    background: linear-gradient(to bottom,  #273057 0%,
+     #273057 50%,
+     #4e5da4 51%,
+     #4e5da4 100%
+     );
+}
+
+
+
+/* .left::before{
+    font-family: 'Font Awesome 6 Free';
+    content: '\f015';
+    font-weight: 900;
+    margin: 12px;
+} */
