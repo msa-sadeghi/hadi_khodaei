@@ -1,130 +1,103 @@
-// var numbers = [1,2,3,4,5]
+// یک پروژه تودولیست پیاده سازی کنید
 
-// numbers.splice(2,2,6,56)
-// console.log(numbers)
+// به این صورت که یک آرایه ای برای ذخیره تودوها داشته باشید و به طور دیفالت 3 تودو داخل آن ذخیره کنید
+// هر تودو مشخصاتی مثل آیدی، اسم تودو و وضعیت را دارد
 
-// var users = [
-//     {id:1, name:'sara', age:23},
-//     {id:2, name:'artin', age:29},
-//     {id:3, name:'armin', age:33}
+// :منویی به 3 گزینه به صورت زیر به کاربر نمایش دهید
+// 1. اضافه کردن تودو
+// 2. حذف تودو
+// 3. انجام تودو (تغییر وضعیت)
+
+// در قسمت اول اسم تودویی را از کاربر دریافت کرده و به لیست تودوها اضافه کنید
+// در قسمت دوم اسم تودویی را از کاربر دریافت کرده و آن را از لیست تودوها حذف کنید
+// در قسمت سوم اسم تودو را دریافت کرده و همان تودو را در وضعیت انجام شده قرار دهید
+
+// در پایان هر کدام از عملیات‌ها، لیست تودوها را در کنسول نمایش دهید
+
+
+var todosArray = [
+    { id: 1, title: 'learn js', isDoing: false },
+    { id: 2, title: 'make footer', isDoing: true },
+    { id: 3, title: 'design', isDoing: false },
+    { id: 4, title: 'vue js', isDoing: false },
+]
+
+// یک پروژه تسک منیجمنت پیاده سازی کنید
+
+// در این سامانه مدیر می تواند به کارمندان خود تسک های مختلفی بدهد
+// به عنوان مثال می تواند به آقای محمد وظیفه خاصی را اعمال کند
+
+// یک ساختار داشته باشید که داخل آن 4 کارمند موجود بوده و هر کارمند وظایفی را بر عهده داشته باشند
+// سپس از کاربر (مدیر) اسم یک تسک را دریافت کرده و همچنین اسم کارمندی را که قصد اضافه کردن تسک به آن دارد
+// دریافت کنید
+// و سپس تسک مورد نظر مدیر را به کارمند مورد نظرش اضافه کرده و لیست را در کنسول نمایش دهید
+
+var tasksArray = {
+    ali: ['html', 'css', 'js'],
+    amin: ['react', 'vue', 'angular'],
+    mohammad: ['seo', 'link building'],
+    amir: ['admin', 'content']
+}
+
+
+var tn = "dm"
+var en = "ali"
+var emtasks = tasksArray[en]
+emtasks.push(tn)
+console.log(emtasks)
+
+
+// یک سامانه فروش بلیط آنلاین پیاده سازی کنید
+
+// به این صورت که مبدا سفر (استان) را از کاربر دریافت کرده 
+// و سپس شهر های استان وارد شده را در کنسول نمایش دهید
+
+// ساختار پروژه و ذخیره سازی اطلاعات بر عهده شما
+
+var cities = {
+    tehran: ['Tehran', 'Shahryar', 'rudehen', 'bumehen'],
+    shiraz: ['shiraz', 'fars', 'jamshid', 'shiraz pars'],
+    mashhad: ['Mashhad', 'Fariman', 'Guchan'],
+    tabriz: ['Tabriz', 'Marand', 'Jolfa', 'Ahar'],
+}
+
+
+
+// یک آزمون آنلاین پیاده سازی کنید
+
+// به این شکل که سوالاتی را به کاربر نمایش داده و پاسخ آن ها را دریافت کرده
+// و به ازای هر پاسخ درست، یک امتیاز به کاربر بدهید
+
+// در پایان آزمون، امتیاز کاربر را نمایش دهید
+
+// var allQuestions = [
+//     {id: 1, title: '2 + 2', answer: '4'},
+//     {id: 2, title: '2 * 4', answer: '8'},
+//     {id: 3, title: '7 ** 2', answer: '49'},
+//     {id: 4, title: '12 / 4', answer: '3'},
+//     {id: 5, title: '100 / 25', answer: '4'},
+//     {id: 6, title: '100 * 2', answer: '200'},
+//     {id: 7, title: 'Cpaital Of Iran?', answer: 'tehran'},
 // ]
 
-// var userIndex = users.findIndex(function(user){
-//     return user.name === 'artin'
-// })
-// console.log(userIndex)
+// یک پروژه ماشین حساب پیاده سازی کنید
 
-
-// پروژه فروشگاه را در نظر بگیرید
-
-// محصولات فروشگاه را داخل آرایه ای ذخیره کرده 
-// و آرایه ای برای سبد خرید در نظر بگیرید
-// و داخل سبد خرید 3 محصول بطور دیفالت قرار دهید
-
-// منویی را به کاربر نمایش دهید که شامل 2 گزینه است
-// گزینه ای برای حذف محصول از سبد خرید
-// و گزینه ای برای اضافه کردن محصول به سبد خرید
-
-// عملیات لازم برای هر گزینه را پیاده سازی کنید
-
-
-// var allProducts = [
-//   { id: 1, name: "laptop", price: 17000000 },
-//   { id: 2, name: "phone", price: 7000000 },
-//   { id: 3, name: "milk", price: 35000 },
-//   { id: 4, name: "pen", price: 12000 },
-//   { id: 5, name: "pencil", price: 9000 },
-//   { id: 6, name: "cable", price: 55000 },
-//   { id: 7, name: "water", price: 6000 },
-//   { id: 8, name: "soft drink", price: 13000 },
-// ];
-
-// var userBasket = [
-//   { id: 1, name: "milk", price: 35000 },
-//   { id: 2, name: "water", price: 6000 },
-// ];
-
-// var userRequest = "2"
-// if(userRequest === "1"){
-//     var userProductName = "laptop"
-//     var selectedProduct;
-//     var isInShop = allProducts.some(function(p){
-//         if (p.name === userProductName){
-//             selectedProduct = p
-//             return true
-//         }
-//     })
-//     if (isInShop){
-//         var newProduct = {
-//             id:userBasket.length ,
-//             name:userProductName,
-//             price:selectedProduct.price
-//         }
-//         userBasket.push(newProduct)
-//         console.log(userBasket)
-//     }else{
-//         console.log("not exists")
-//     }
-// }else if(userRequest === "2"){
-//     var userProductName = "milk"
-//     var pi = userBasket.findIndex(function(p){
-//         return p.name == userProductName
-//     })
-//     userBasket.splice(pi, 1)
-//     console.log(userBasket)
-
-// }
-
-
-// var numbers = [1,2,3,4,5]
-
-// var newNumbers =  numbers.map(function(n){
-//         return n ** 2
-// })
-
-// console.log(newNumbers)
-// var newNumbers =  numbers.filter(function(n){
-//         return n > 2
-// })
-
-// console.log(newNumbers)
+// به این صورت که 2 عدد را همراه با عملیات لازم (ضرب، تقسیم و ...) از کاربر دریافت کرده
+//  و عملیات دلخواه کاربر را روی اعداد ورودی اعمال کنید و حاصل را نمایش دهید
 
 
 
-// یک پروژه فروشگاه آنلاین پیاده سازی کنید
+var users = [
+    {id: 1, name: 'Ali', age: 21},
+    {id: 2, name: 'Amin', age: 19},
+    {id: 3, name: 'Amir', age: 26},
+    {id: 4, name: 'Babak', age: 28},
+]
 
-// به این صورت که یک آرایه به عنوان سبد خرید کاربر
-//  در نظر بگیرید که 6 محصول به طور دیفالت دارد
 
-// سیاست کاری فروشگاه به این شکل است که
-//  برای محصولاتی که بالای 100 هزار تومان باشند،
-//  از مشتری هزینه پست دریافت نمی شود
-
-// اما محصولاتی که زیر 100 هزار تومان قیمت داشته باشند، برای 
-// هر کدام 1000 تومان هزینه ارسال (هزینه پست) دریافت میشه
-
-// لطفا قیمت کل سبد خرید را همراه با
-//  هزینه پست محاسبه کرده و به کاربر نمایش دهید
-
-var numbers = [1,2,3,4,5,1]
-
-console.log(typeof numbers)
-
-console.log(Array.isArray(numbers))
-console.log(numbers.indexOf(1))
-console.log(numbers.lastIndexOf(1))
-console.log(numbers.slice(2,4))
-console.log(numbers.join(''))
-console.log(numbers.reverse())
-
-var x = "bla lal alal"
-
-console.log(x.split(" "))
-
-// کلمه ای از کاربر دریافت کرده و چک کنید 
-// که کلمه وارد شده از هر دو سمت چپ و راست به یک صورت خوانده 
-// می شود یا خیر
-
-// به عنوان مثل کلمه 
-// gig 
-// از هر دو طرف به یک صورت خوانده می شود
+var u = users.find(function(user){
+    return user.name.toLowerCase() == "babak"
+})
+console.log(u)
+eval("var x = 10")
+console.log(x)
