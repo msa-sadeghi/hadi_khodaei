@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
+</head>
+<body>
+  
+    <div class="d-inline">test</div>
+    <div class="d-none d-md-inline">ok</div>
+    <div class="d-flex p-3 bg-light justify-content-center align-items-center">
+        <div>left</div>
+        <div>middle</div>
+        <div>right</div>
+    </div>
+    <a href="" class="btn btn-primary"
+    data-bs-toggle="collapse"
+    data-bs-target="#collpaseitem"
+    >Toggle</a>
+    <div class="collapse" id="collpaseitem">
+        <div class="card card-body">
+            Ths  is a card
+        </div>
+    </div>
+
+    <button
+    class="btn btn-success"
+    data-bs-toggle="modal"
+    data-bs-target="#myModal"
+    >show Modal</button>
+
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal Title</h5>
+                    <button type="button" 
+                    data-bs-dismiss="modal"
+                    class="btn-close"></button>
+                </div>
+                <div class="modal-body">
+                    This is modal's body
+                </div>
+                <div class="modal-footer">
+                    <div class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                    >close</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+</body>
+</html>
