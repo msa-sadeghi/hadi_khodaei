@@ -1,103 +1,16 @@
-// یک پروژه تودولیست پیاده سازی کنید
+const element = document.getElementsByName('test')[0]
+console.log(element.innerText)
+const element2 = document.getElementsByTagName('li')[1]
+console.log(element2.innerText)
+const element3 = document.getElementsByClassName('list-item')[2]
+console.log(element3.innerText)
+const element4 = document.querySelectorAll('.list-item')[3]
+console.log(element4.innerText)
+const element5 = document.querySelector('.list-item#tt')
+console.log(element5.innerText)
 
-// به این صورت که یک آرایه ای برای ذخیره تودوها داشته باشید و به طور دیفالت 3 تودو داخل آن ذخیره کنید
-// هر تودو مشخصاتی مثل آیدی، اسم تودو و وضعیت را دارد
+const h3Element = document.querySelector('h3')
+document.addEventListener('click', function(){
 
-// :منویی به 3 گزینه به صورت زیر به کاربر نمایش دهید
-// 1. اضافه کردن تودو
-// 2. حذف تودو
-// 3. انجام تودو (تغییر وضعیت)
-
-// در قسمت اول اسم تودویی را از کاربر دریافت کرده و به لیست تودوها اضافه کنید
-// در قسمت دوم اسم تودویی را از کاربر دریافت کرده و آن را از لیست تودوها حذف کنید
-// در قسمت سوم اسم تودو را دریافت کرده و همان تودو را در وضعیت انجام شده قرار دهید
-
-// در پایان هر کدام از عملیات‌ها، لیست تودوها را در کنسول نمایش دهید
-
-
-var todosArray = [
-    { id: 1, title: 'learn js', isDoing: false },
-    { id: 2, title: 'make footer', isDoing: true },
-    { id: 3, title: 'design', isDoing: false },
-    { id: 4, title: 'vue js', isDoing: false },
-]
-
-// یک پروژه تسک منیجمنت پیاده سازی کنید
-
-// در این سامانه مدیر می تواند به کارمندان خود تسک های مختلفی بدهد
-// به عنوان مثال می تواند به آقای محمد وظیفه خاصی را اعمال کند
-
-// یک ساختار داشته باشید که داخل آن 4 کارمند موجود بوده و هر کارمند وظایفی را بر عهده داشته باشند
-// سپس از کاربر (مدیر) اسم یک تسک را دریافت کرده و همچنین اسم کارمندی را که قصد اضافه کردن تسک به آن دارد
-// دریافت کنید
-// و سپس تسک مورد نظر مدیر را به کارمند مورد نظرش اضافه کرده و لیست را در کنسول نمایش دهید
-
-var tasksArray = {
-    ali: ['html', 'css', 'js'],
-    amin: ['react', 'vue', 'angular'],
-    mohammad: ['seo', 'link building'],
-    amir: ['admin', 'content']
-}
-
-
-var tn = "dm"
-var en = "ali"
-var emtasks = tasksArray[en]
-emtasks.push(tn)
-console.log(emtasks)
-
-
-// یک سامانه فروش بلیط آنلاین پیاده سازی کنید
-
-// به این صورت که مبدا سفر (استان) را از کاربر دریافت کرده 
-// و سپس شهر های استان وارد شده را در کنسول نمایش دهید
-
-// ساختار پروژه و ذخیره سازی اطلاعات بر عهده شما
-
-var cities = {
-    tehran: ['Tehran', 'Shahryar', 'rudehen', 'bumehen'],
-    shiraz: ['shiraz', 'fars', 'jamshid', 'shiraz pars'],
-    mashhad: ['Mashhad', 'Fariman', 'Guchan'],
-    tabriz: ['Tabriz', 'Marand', 'Jolfa', 'Ahar'],
-}
-
-
-
-// یک آزمون آنلاین پیاده سازی کنید
-
-// به این شکل که سوالاتی را به کاربر نمایش داده و پاسخ آن ها را دریافت کرده
-// و به ازای هر پاسخ درست، یک امتیاز به کاربر بدهید
-
-// در پایان آزمون، امتیاز کاربر را نمایش دهید
-
-// var allQuestions = [
-//     {id: 1, title: '2 + 2', answer: '4'},
-//     {id: 2, title: '2 * 4', answer: '8'},
-//     {id: 3, title: '7 ** 2', answer: '49'},
-//     {id: 4, title: '12 / 4', answer: '3'},
-//     {id: 5, title: '100 / 25', answer: '4'},
-//     {id: 6, title: '100 * 2', answer: '200'},
-//     {id: 7, title: 'Cpaital Of Iran?', answer: 'tehran'},
-// ]
-
-// یک پروژه ماشین حساب پیاده سازی کنید
-
-// به این صورت که 2 عدد را همراه با عملیات لازم (ضرب، تقسیم و ...) از کاربر دریافت کرده
-//  و عملیات دلخواه کاربر را روی اعداد ورودی اعمال کنید و حاصل را نمایش دهید
-
-
-
-var users = [
-    {id: 1, name: 'Ali', age: 21},
-    {id: 2, name: 'Amin', age: 19},
-    {id: 3, name: 'Amir', age: 26},
-    {id: 4, name: 'Babak', age: 28},
-]
-
-
-var u = users.find(function(user){
-    return user.name.toLowerCase() == "babak"
+    h3Element.setAttribute('class', 'test')
 })
-console.log(u)
-eval("var x = 10")
-console.log(x)
