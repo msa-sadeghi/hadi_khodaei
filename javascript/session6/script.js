@@ -1,3 +1,2 @@
-document.body.addEventListener('keydown', function(event){
-    console.log(event.key)
-})
+let s = document.querySelector('#starter')
+console.log(s.nextElementSibling.nextElementSibling)
