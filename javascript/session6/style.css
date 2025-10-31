@@ -1,75 +1,84 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 *{
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
 }
 body{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background: linear-gradient(to top, #56e2d7 0%, #58cff1 100%);
+  background: rgba(19, 19, 23, 0.9);
 }
-.wrapper{
-  background: #fff;
-  padding: 20px;
-  width: 450px;
-  border-radius: 5px;
-  box-shadow: 0px 5px 10px rgba(0,0,0,0.1);
-}
-.wrapper form{
-  height: 55px;
-  display: flex;
-  position: relative;
-  align-items: center;
-  justify-content: space-between;
-}
-form i{
-  position: absolute;
-  width: 55px;
-  text-align: center;
-  font-size: 23px;
-  color: #c4c4c4;
-  pointer-events: none;
-}
-form input:valid ~ i{
-  color: #58cff1;
-}
-form input{
-  height: 100%;
+section{
+  background-image: url("../images/modal-background.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
   width: 100%;
-  outline: none;
-  padding: 0 50px 0 45px;
-  font-size: 20px;
-  caret-color: #58cff1;
-  border: 2px solid #ddd;
-  border-radius: 5px;
-  transition: all 0.1s ease;
+  /* filter: blur(6px); */
 }
-form input::selection{
-  color: #fff;
-  background: #58cff1;	
+.center{
+  color: white;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
-form input:focus,
-form input:valid{
-  border-color: #58cff1;
-}
-form input::placeholder{
-  color: #c4c4c4;
-}
-form .counter{
-  position: absolute;
-  right: 3px;
-  width: 55px;
-  font-size: 20px;
-  color: #c4c4c4;
+h1{
   text-align: center;
-  border-left: 1px solid #d8d8d8;
-  pointer-events: none;
+  font-size: 50px;
+  font-family: sans-serif;
+  margin: 40px;
+  text-transform: capitalize;
 }
-form input:valid ~ .counter{
-  color: #58cff1;
-  border-color: #58cff1;
+button{
+  margin: 0 auto;
+  height: 60px;
+  width: 500px;
+  background: #5454ff;
+  border: none;
+  border-radius: 6px;
+  font-size: 25px;
+  color: #000;
+  cursor: pointer;
+}
+
+.modal-parent{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  display: none;
+}
+.modal{
+  background: white;
+  width: 70%;
+  padding: 30px;
+  border-radius: 6px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 22px;
+  font-family: arial;
+  position: relative;
+  animation: 0.5s drop;
+}
+@keyframes drop {
+  0%{
+    top: -100px;
+  }
+  100%{
+    top: 50%;
+  }
+}
+.X{
+  position: absolute;
+  right: 20px;
+  top: 5px;
+  font-size: 40px;
+  cursor: pointer;
+
+}
+section{
+  transition: 2s;
 }
