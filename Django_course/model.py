@@ -97,24 +97,85 @@
 
 # print(validate_field(5, [is_positive, is_even]))
 
-def repeat(times):
-    def timer_decorator(func):
-        import time
-        def wrapper(*args , **kwargs):
-            start = time.time()
-            for i in range(2):
-                result = func(*args, **kwargs)
-            end = time.time()
-            print(f"{func.__name__} took {end - start:.2f} seconds")
-            return result
-        return wrapper
-    return timer_decorator
+# def repeat(times):
+#     def timer_decorator(func):
+#         import time
+#         def wrapper(*args , **kwargs):
+#             start = time.time()
+#             for i in range(2):
+#                 result = func(*args, **kwargs)
+#             end = time.time()
+#             print(f"{func.__name__} took {end - start:.2f} seconds")
+#             return result
+#         return wrapper
+#     return timer_decorator
 
-@repeat(times=22)
-def slow_function():
-    import time
-    time.sleep(2)
-    return "Done"
+# @repeat(times=22)
+# def slow_function():
+#     import time
+#     time.sleep(2)
+#     return "Done"
 
 
-print(slow_function())
+# print(slow_function())
+
+
+# def count_up_to(n):
+#     count = 1
+#     while count <= n:
+#         yield count
+#         count += 1
+
+# counter = count_up_to(5)
+# print(next(counter))
+# print(next(counter))
+# import pandas as pd
+# def iter_trades(chunck=1):
+#     for df in pd.read_csv("test.csv", chunksize=chunck):
+        
+#         filt = df[df['Price'] >= 1000] 
+#         yield filt
+#     # return None
+
+# for tr in iter_trades():
+#     print(tr)
+
+
+# squares_list = (x**2 for x in range(1_000_000))
+# print(next(squares_list))
+# print(next(squares_list))
+# print(next(squares_list))
+# print(next(squares_list))
+
+# def read_logs(filename, encoding='utf-8'):
+#     with open(filename, encoding=encoding) as f:
+#         for line in f:
+#             yield line
+
+# def filter_errors(lines, keyword="ERROR"):
+#     for line in lines:
+#         if keyword in line:
+#             yield line
+
+# def extract_timestamp(lines):
+#     for line in lines:
+#         # استخراج timestamp
+#         yield line.split()[0]
+
+# # Pipeline
+# logs = read_logs('app.log')
+# errors = filter_errors(logs)
+# for ts in extract_timestamp(errors):
+#     print(ts)
+from collections import Counter
+
+def bucket_minute(timestamps):
+    for ts in timestamps:
+        yield ts[:16]  # فرض: فرمت ISO مانند 2025-11-07T09:37
+
+def count_by_minute(minutes):
+    counts = Counter()
+    for m in  minutes:
+        counts[m] += 1
+    return counts
+
