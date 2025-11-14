@@ -167,15 +167,257 @@
 # errors = filter_errors(logs)
 # for ts in extract_timestamp(errors):
 #     print(ts)
-from collections import Counter
+# from collections import Counter
 
-def bucket_minute(timestamps):
-    for ts in timestamps:
-        yield ts[:16]  # فرض: فرمت ISO مانند 2025-11-07T09:37
+# def bucket_minute(timestamps):
+#     for ts in timestamps:
+#         yield ts[:16]  # فرض: فرمت ISO مانند 2025-11-07T09:37
 
-def count_by_minute(minutes):
-    counts = Counter()
-    for m in  minutes:
-        counts[m] += 1
-    return counts
+# def count_by_minute(minutes):
+#     counts = Counter()
+#     for m in  minutes:
+#         counts[m] += 1
+#     return counts
 
+
+
+# class User:
+#     # Class variable - مشترک بین همه instances
+#     user_count = 0
+    
+#     def __init__(self, username, email):
+#         # Instance variables - منحصر به هر object
+#         self.username = username
+#         self.email = email
+#         self.is_active = True
+#         User.user_count += 1
+    
+#     def __str__(self):
+#         return f"User: {self.username}"
+    
+#     def __repr__(self):
+#         return f"User(username='{self.username}', email='{self.email}')"
+    
+#     def activate(self):
+#         self.is_active = True
+#         return f"{self.username} activated"
+    
+#     def deactivate(self):
+#         self.is_active = False
+#         return f"{self.username} deactivated"
+
+# # استفاده
+# user1 = User("john_doe", "john@example.com")
+# user2 = User("jane_doe", "jane@example.com")
+
+# print(User.user_count)  # 2
+# print(user1)  # User: john_doe
+
+
+# class BlogPost:
+#     def __init__(self, title, content):
+#         self._title = title
+#         self._content = content
+#         self._views = 0
+    
+#     @property
+#     def title(self):
+#         """Getter برای title"""
+#         return self._title
+    
+#     @title.setter
+#     def title(self, value):
+#         """Setter با validation"""
+#         if len(value) < 5:
+#             raise ValueError("Title must be at least 5 characters")
+#         self._title = value
+    
+#     @property
+#     def views(self):
+#         return self._views
+    
+#     @property
+#     def is_popular(self):
+#         """Computed property"""
+#         return self._views > 1000
+    
+#     def increment_views(self):
+#         self._views += 1
+
+# # استفاده
+# post = BlogPost("Django Tutorial", "Content here...")
+# post._views = -100
+# print(post.title)  # Django Tutorial
+# post.title = "Advanced Django"  # استفاده از setter
+# print(post.is_popular)  # False
+# print(post.views)  # False
+
+
+
+# from datetime import datetime
+
+# class Article:
+#     article_count = 0
+    
+#     def __init__(self, title, author, published_date):
+#         self.title = title
+#         self.author = author
+#         self.published_date = published_date
+#         Article.article_count += 1
+    
+#     @classmethod
+#     def create_draft(cls, title, author):
+#         """Factory method برای ساخت draft"""
+#         return cls(title, author, None)
+    
+#     @classmethod
+#     def from_dict(cls, data):
+#         """ساخت object از dictionary"""
+#         return cls(
+#             title=data['title'],
+#             author=data['author'],
+#             published_date=data.get('published_date')
+#         )
+    
+#     @staticmethod
+#     def is_valid_date(date_string):
+#         """Utility method - نیازی به instance یا class ندارد"""
+#         try:
+#             datetime.strptime(date_string, '%Y-%m-%d')
+#             return True
+#         except ValueError:
+#             return False
+    
+#     @classmethod
+#     def get_count(cls):
+#         return cls.article_count
+
+# # استفاده
+# article1 = Article("Django Guide", "John", "2025-10-01")
+# print(article1.is_valid_date("2025-10-01"))
+# article2 = Article.create_draft("New Post", "Jane")
+# print(article2.is_valid_date("2025-10-01"))
+# data = {'title': 'Python Tips', 'author': 'Ali'}
+# article3 = Article.from_dict(data)
+
+# print(Article.is_valid_date("2025-10-01"))  # True
+# print(Article.get_count())  # 3
+
+
+
+# class NotificationService:
+#     def send(self, recipient, message):
+#         raise NotImplementedError("Subclass must implement send()")
+
+# class EmailNotification(NotificationService):
+#     def send(self, recipient, message):
+#         return f"Email sent to {recipient}: {message}"
+
+# class SMSNotification(NotificationService):
+#     def send(self, recipient, message):
+#         return f"SMS sent to {recipient}: {message}"
+
+# class PushNotification(NotificationService):
+#     def send(self, recipient, message):
+#         return f"Push notification sent to {recipient}: {message}"
+
+# class NotificationManager:
+#     def __init__(self):
+#         self.services = []
+    
+#     def add_service(self, service):
+#         self.services.append(service)
+    
+#     def notify_all(self, recipient, message):
+#         """Polymorphism در عمل"""
+#         results = []
+#         for service in self.services:
+#             # هر service متد send خود را دارد
+#             results.append(service.send(recipient, message))
+#         return results
+
+# # استفاده
+# manager = NotificationManager()
+# manager.add_service(EmailNotification())
+# manager.add_service(SMSNotification())
+# manager.add_service(PushNotification())
+
+# results = manager.notify_all("user@example.com", "Welcome!")
+# for result in results:
+#     print(result)
+
+
+# class JSONSerializer:
+#     def serialize(self, data):
+#         import json
+#         return json.dumps(data)
+
+# class XMLSerializer:
+#     def serialize(self, data):
+#         # ساده‌سازی شده
+#         return f"<data>{data}</data>"
+
+# class YAMLSerializer:
+#     def serialize(self, data):
+#         # ساده‌سازی شده
+#         return f"---\ndata: {data}"
+
+# def save_data(data, serializer):
+#     """
+#     Duck typing: اگر serializer متد serialize دارد، کار می‌کند
+#     نیازی به وراثت یا interface خاص نیست
+#     """
+#     serialized = serializer.serialize(data)
+#     print(f"Saving: {serialized}")
+#     return serialized
+
+# # استفاده
+# data = {'user': 'john', 'age': 30}
+
+# save_data(data, JSONSerializer())
+# save_data(data, XMLSerializer())
+# save_data(data, YAMLSerializer())
+
+
+
+
+class Vector:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    
+    def __add__(self, other):
+        """Overload + operator"""
+        return Vector(self.x + other.x, self.y + other.y)
+    
+    def __sub__(self, other):
+        """Overload - operator"""
+        return Vector(self.x - other.x, self.y - other.y)
+    
+    def __mul__(self, scalar):
+        """Overload * operator"""
+        return Vector(self.x * scalar, self.y * scalar)
+    
+    def __str__(self):
+        return f"Vector({self.x}, {self.y})"
+    
+    def __eq__(self, other):
+        """Overload == operator"""
+        return self.x == other.x and self.y == other.y
+    
+    def __len__(self):
+        """برای len()"""
+        import math
+        return int(math.sqrt(self.x**2 + self.y**2))
+
+# استفاده
+v1 = Vector(3, 4)
+v2 = Vector(1, 2)
+
+v3 = v1 + v2
+print(v3)  # Vector(4, 6)
+
+v4 = v1 * 2
+print(v4)  # Vector(6, 8)
+
+print(len(v1))  # 5
