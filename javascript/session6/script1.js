@@ -1,12 +1,11 @@
-let buttons = document.querySelectorAll('button')
+const switchElement = document.querySelector('.switch')
 
-buttons[0].addEventListener('click', function(e){
-    localStorage.setItem('name',  "sara")
+switchElement.addEventListener('click', function(element){
+    document.documentElement.classList.toggle('dark')
+    if(document.documentElement.classList.contains('dark')){
+        localStorage.setItem('theme',  'dark')
+    }else{
+        localStorage.setItem('theme', 'light')
+    }
 })
-buttons[1].addEventListener('click', function(e){
-    let name = localStorage.getItem('name')
-    alert(name)
-})
-buttons[2].addEventListener('click', function(e){
-    localStorage.clear()
-})
+
