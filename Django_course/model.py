@@ -381,43 +381,88 @@
 
 
 
-class Vector:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
+# class Vector:
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
     
-    def __add__(self, other):
-        """Overload + operator"""
-        return Vector(self.x + other.x, self.y + other.y)
+#     def __add__(self, other):
+#         """Overload + operator"""
+#         return Vector(self.x + other.x, self.y + other.y)
     
-    def __sub__(self, other):
-        """Overload - operator"""
-        return Vector(self.x - other.x, self.y - other.y)
+#     def __sub__(self, other):
+#         """Overload - operator"""
+#         return Vector(self.x - other.x, self.y - other.y)
     
-    def __mul__(self, scalar):
-        """Overload * operator"""
-        return Vector(self.x * scalar, self.y * scalar)
+#     def __mul__(self, scalar):
+#         """Overload * operator"""
+#         return Vector(self.x * scalar, self.y * scalar)
     
-    def __str__(self):
-        return f"Vector({self.x}, {self.y})"
+#     def __str__(self):
+#         return f"Vector({self.x}, {self.y})"
     
-    def __eq__(self, other):
-        """Overload == operator"""
-        return self.x == other.x and self.y == other.y
+#     def __eq__(self, other):
+#         """Overload == operator"""
+#         return self.x == other.x and self.y == other.y
     
-    def __len__(self):
-        """برای len()"""
-        import math
-        return int(math.sqrt(self.x**2 + self.y**2))
+#     def __len__(self):
+#         """برای len()"""
+#         import math
+#         return int(math.sqrt(self.x**2 + self.y**2))
 
 # استفاده
-v1 = Vector(3, 4)
-v2 = Vector(1, 2)
+# v1 = Vector(3, 4)
+# v2 = Vector(1, 2)
 
-v3 = v1 + v2
-print(v3)  # Vector(4, 6)
+# v3 = v1 + v2
+# print(v3)  # Vector(4, 6)
 
-v4 = v1 * 2
-print(v4)  # Vector(6, 8)
+# v4 = v1 * 2
+# print(v4)  # Vector(6, 8)
 
-print(len(v1))  # 5
+# print(len(v1))  # 5
+
+
+# __enter__    __exit__
+
+# class FileManager:
+#     def __init__(self, filename, mode):
+#         self.filename = filename
+#         self.mode = mode
+#         self.file = None
+
+#     def __enter__(self):
+#         print(f"opening file:{self.filename}")
+#         self.file = open(self.filename, self.mode)
+#         return self.file
+    
+
+#     def __exit__(self, exc_type, exc_val, exc_tb):
+#         print(f"closing file {self.filename}")
+#         if self.file:
+#             self.file.close()
+#         if exc_type is not None:
+#             print(f"Exception occurred {exc_type.__name__}")
+#             return False
+
+
+# with FileManager("test.txt", "w") as f:
+#     f.write("this is a test string")
+
+
+from contextlib import contextmanager
+
+@contextmanager
+def timer():
+    import time
+    start = time.time()
+    try:
+        yield
+    finally:
+        end = time.time()
+        print(f"Execution time {end - start : .4f} seconds")
+
+
+with timer():
+    total = sum(range(1_000_000))
+    print(f"sum is {total}")
