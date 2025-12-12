@@ -1,26 +1,15 @@
-const addBtn = document.querySelector('button')
-const divElem = document.querySelector('div')
-const pElem = document.querySelector('p')
 
-addBtn.addEventListener('click', () => divElem.style.animation ='move 4s 3')
 
-function startH(){
+let allImages = ["",""]
+let index = 0
 
-}
-
-function startR(){
-
-}
-function startE(){
-
+let img = document.querySelector('img')
+function NextBtn(){
+    img.setAttribute('src', allImages[index])
 }
 
 
-divElem.addEventListener('animationstart', startH)
-divElem.addEventListener('animationiteration', startR)
-divElem.addEventListener('animationend', startE)
+function PrevBtn(){
 
-
-const add  = () => a + b
-
-console.log(add(2,3))
+}
+setInterval(NextBtn, 3000)
