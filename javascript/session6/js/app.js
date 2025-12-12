@@ -1,26 +1,9 @@
-const addBtn = document.querySelector('button')
-const divElem = document.querySelector('div')
-const pElem = document.querySelector('p')
+const boxElem = document.querySelector('.box')
 
-addBtn.addEventListener('click', () => divElem.style.animation ='move 4s 3')
+console.log(boxElem.style)
 
-function startH(){
-
-}
-
-function startR(){
-
-}
-function startE(){
-
-}
+let boxStyles = getComputedStyle(boxElem)
+console.log(boxStyles.backgroundColor)
+console.log(boxStyles.getPropertyValue('width'))
 
 
-divElem.addEventListener('animationstart', startH)
-divElem.addEventListener('animationiteration', startR)
-divElem.addEventListener('animationend', startE)
-
-
-const add  = () => a + b
-
-console.log(add(2,3))
