@@ -1,3 +1,7 @@
+
+:root{
+    --test-color:red
+}
 *,
 *:before,
 *:after{
@@ -40,7 +44,7 @@ input[type="range"]{
     height: 3.5px;
     -webkit-appearance: none;
     appearance: none;
-    background-color: #dcdcdc;
+    background-color: var(--test-color);
     border-radius: 3px;
     outline: none;
 }
