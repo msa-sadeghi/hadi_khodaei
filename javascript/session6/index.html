@@ -1,43 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content=" TodoList" />
-    <meta name="author" content="" />
+<head>
     <title></title>
-
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="style.css" rel="stylesheet" />
-  </head>
-  <body>
-   
-<<<<<<< HEAD
-     <div class="container">
-        <div class="row">
-            <input type="range" min="20" max="200" value="20" id="weight">
-            <span id="weight-val">20 kg</span>
+    <!--Google Font-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!--Stylesheet-->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <img src="image/profile_img2.jpg" alt="profile_img">
+            <h4>Emily Fisher</h4>
+            <h5>Senior Web Developer</h5>
+            <div class="details">
+                <div class="column">
+                    <h2>1.6K</h2>
+                    <span>Followers</span>
+                </div>
+                <div class="column">
+                    <h2>852</h2>
+                    <span>Following</span>
+                </div>
+            </div>
+            <div class="buttons">
+                <button>Follow</button>
+                <button>Message</button>
+            </div>
         </div>
-        <div class="row">
-            <input type="range" min="100" max="250" value="100" id="height">
-            <span id="height-val">100 cm</span>
+        <div class="themes">
+            <button class="btn btn1" data-color="#3498db"></button>
+            <button class="btn btn2" data-color="#ff1756"></button>
+            <button class="btn btn3" data-color="#1cb65d"></button>
+            <button class="btn btn4" data-color="#8e44ad"></button>
+            <button class="btn btn5" data-color="#f4b932"></button>
         </div>
-
-        <p id="result">20.0</p>
-        <p id="category">Normal weight</p>
-=======
-    <div class="container-slider">
-      <div class="slider">
-        <div class="slider-item active">
-          <img src="image/1.jpg" class="img-slider" />
-        </div>
-        <button type="button" class="prev" ><i class="icofont icofont-ui-previous"></i></button>
-        <button type="button" class="next" ><i class="icofont icofont-ui-next"></i></button>
-      </div>
->>>>>>> 27073f3d2e2bc68f38e4d13561e38d1f03f9251b
     </div>
-    <script type="text/javascript" src="js/app.js"></script>
-  </body>
+
+    <!--Script-->
+    <script src="script.js"></script>
+</body>
 </html>
