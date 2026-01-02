@@ -10,7 +10,12 @@
         <input type="text" name="name" value="blalalla">
         <button>submit</button>
     </form>
-    <h1>Hello World</h1>
-    <p>Welcome to {{name}} class</p>
+    <h1>All books</h1>
+    {% for book in books %}
+    <div>
+        <a href="">{{ book.title }}</a>
+        
+    </div>
+    {% endfor %}
 </body>
 </html>

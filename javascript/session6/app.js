@@ -1,24 +1,29 @@
-const bookList = document.getElementById("book-list")
-const submitBtn = document.querySelector("[type='submit']")
-const titleElem = document.getElementById('title')
-const author = document.getElementById('author')
-const year = document.getElementById('year')
-submitBtn.addEventListener('click', (e)=>{
-        e.preventDefault()
-        let titlevalue = titleElem.value
-        let authorvalue = author.value
-        let yearvalue = year.value
+let $ = document
+const hourElem = $.querySelector('#hour')
+const minuteElem = $.querySelector('#minute')
+const secondElem = $.querySelector('#seconds')
 
-        console.log(titleElem)
-        let newTr = document.createElement('tr')
-        let tdTitle = document.createElement('td')
-        tdTitle.innerHTML = titlevalue
-        let authorTd = document.createElement('td')
-        authorTd.innerHTML = authorvalue
-        let yearTd = document.createElement('td')
-        yearTd.innerHTML = yearvalue
 
-        newTr.append(tdTitle, authorTd, yearTd)
-        bookList.append(newTr)
-        
-})
+setInterval(function () {
+    let myDate = new Date()
+
+    let nowHour = myDate.getHours()
+    let nowMinute = myDate.getMinutes()
+    let nowSecond = myDate.getSeconds()
+
+    if (nowHour < 10) {
+        nowHour = '0' + nowHour
+    }
+    if (nowMinute < 10) {
+        nowMinute = '0' + nowMinute
+    }
+    if (nowSecond < 10) {
+        nowSecond = '0' + nowSecond
+    }
+
+    hourElem.innerHTML = nowHour
+    minuteElem.innerHTML = nowMinute
+    secondElem.innerHTML = nowSecond
+
+    console.log(myDate);
+}, 1000);

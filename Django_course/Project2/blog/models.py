@@ -11,3 +11,12 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        ordering = ["-created_at"]
+        verbose_name = "مقاله"
+        verbose_name_plural = "مقالات"
+
+
+class Categoty(models.Model):
+    pass

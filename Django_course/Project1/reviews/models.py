@@ -7,11 +7,17 @@ class Publisher(models.Model):
     website = models.URLField(help_text="The publisher's webite")
     email = models.EmailField(help_text="The publisher's email address")
 
+    def __str__(self):
+        return self.name
+
 
 class Contributor(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField()
+
+    def __str__(self):
+        return self.first_name
 
 
 class Book(models.Model):
@@ -20,6 +26,9 @@ class Book(models.Model):
     isbn = models.CharField(max_length=20)
     publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE)
     contributors = models.ManyToManyField(Contributor, through="BookContributor")
+
+    def __str__(self):
+        return self.title
 
 
 class BookContributor(models.Model):

@@ -1,7 +1,13 @@
 from django.shortcuts import render
+from .models import Book, Publisher, Contributor
 
 
 def index(request):
-    name = request.GET.get("name", "golang")
-    print(request)
-    return render(request, "reviews/base.html", {"name": name})
+    books = Book.objects.all()
+    return render(request, "reviews/book_list.html", {"books": books})
+
+
+def book_detail(request, id):
+    details = Book.objects.get(id=id)
+    print(details)
+    return render(request, "reviews/book_details.html", {"details": details})
