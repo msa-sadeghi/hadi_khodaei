@@ -6,29 +6,17 @@
     <title>Text Generator</title>
     <!--Stylesheets-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body class="bg-light">
-    <h1 class="text-center mt-5 mb-5"></h1>
-    <div class="container">
-      <div class="row">
-        <!--Form Section-->
-        <div class="col-xl-6 mt-4 mt-xl-0">
-          <form class="form-inline" action="" id="form">
-            <label for="amount">Paragraph Number: </label>
-            <input type="number" class="form-control mr-1 mb-1 mb-sm-0 ml-sm-2" name="amount" id="amount" placeholder="5" />
-            <button class="btn btn-primary">Generate</button>
-          </form>
-        </div>
-
-        <!--Result Section-->
-        <div class="col-xl-6">
-          <article class="mt-4 mt-xl-0" id="result"></article>
-        </div>
-      </div>
-    </div>
+     <h1>Users</h1>
+    </header>
+    <main>
+      <div class="list" id="list"></div>
+      <div class="pagenumbers" id="pagination"></div>
+    </main>
 
     <!--JavaScript-->
-    <script src="js/app.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>
