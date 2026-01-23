@@ -1,72 +1,78 @@
-    const listItems = [
-    { id: 1, name: 'reza', family: 'ahmadi Rad' },
-    { id: 2, name: 'Amir', family: 'Zehtab' },
-    { id: 3, name: 'mohammad', family: 'yegane' },
-    { id: 4, name: 'armin', family: 'mohammadzade' },
-    { id: 5, name: 'ata', family: 'nadi Zadeh' },
+let allProducts = [
+    { id: 1, title: 'Album 1', price: 5, img: 'Images/Album 1.png', count: 1 },
+    { id: 2, title: 'Album 2', price: 15, img: 'Images/Album 2.png', count: 1 },
+    { id: 3, title: 'Album 3', price: 20, img: 'Images/Album 3.png', count: 1 },
+    { id: 4, title: 'Album 4', price: 100, img: 'Images/Album 4.png', count: 1 },
+    { id: 5, title: 'Coffee', price: 5, img: 'Images/Cofee.png', count: 1 },
+    { id: 6, title: 'Shirt', price: 50, img: 'Images/Shirt.png', count: 1 },
+]
 
-    { id: 6, name: 'reza', family: 'ahmadi Rad' },
-    { id: 7, name: 'Amir', family: 'Zehtab' },
-    { id: 8, name: 'sara', family: 'ariamanesh' },
-    { id: 9, name: 'arman', family: 'dara' },
-    { id: 10, name: 'ladan', family: 'poua Zadeh' },
 
-    { id: 11, name: 'abbas', family: 'tehrani' },
-    { id: 12, name: 'peyman', family: 'minaee' },
-    { id: 13, name: 'javad', family: 'rasoli' },
-    { id: 14, name: 'Mehran', family: 'Ali Pour' },
-    { id: 15, name: 'Amir mohammad', family: 'naderi' },
 
-    { id: 16, name: 'paria', family: 'maleki' },
-    { id: 17, name: 'dara', family: 'jabbari' },
-    { id: 18, name: 'sara', family: 'ariamanesh' },
-    { id: 19, name: 'Fatemeh', family: 'ataei' },
-    { id: 20, name: 'arash', family: 'tahaei' },
+let userBasket = []
 
-    { id: 21, name: 'mina', family: 'rad' },
-    { id: 22, name: 'Matin', family: 'rezapour' },
+let $ = document
+const shopItemsContainer = $.querySelector('.shop-items')
+const bastekProductsContainer = $.querySelector('.cart-items')
+const removeAllProductsBtn = $.querySelector('#remove-all-products')
+const cartTotalPriceElem = $.querySelector('.cart-total-price')
+
+allProducts.forEach(function (product) {
+    let productContainer = $.createElement('div')
+    productContainer.classList.add('shop-item')
+
+    let productTitleSpan = $.createElement('span')
+    productTitleSpan.classList.add('shop-item-title')
+    productTitleSpan.innerHTML = product.title
+
+    let productImageElem = $.createElement('img')
+    productImageElem.classList.add('shop-item-image')
+    productImageElem.setAttribute('src', product.img)
+
+    let productDetailsContainer = $.createElement('div')
+    productDetailsContainer.classList.add('shop-item-details')
+
+    let productPriceSpan = $.createElement('span')
+    productPriceSpan.innerHTML = product.price
+    productPriceSpan.classList.add('shop-item-price')
+
+    let prodcutAddButton = $.createElement('button')
+    prodcutAddButton.innerHTML = 'ADD TO CART'
+    prodcutAddButton.className = 'btn btn-primary shop-item-button'
+    prodcutAddButton.addEventListener('click', function () {
+        addProductToBasketArray(product.id)
+    })
+
+    productDetailsContainer.append(productPriceSpan, prodcutAddButton)
+    productContainer.append(productTitleSpan, productImageElem, productDetailsContainer)
+    shopItemsContainer.append(productContainer)
+
+})
+
+
+
+function addProductToBasketArray (productId) {
+
+   
+}
+
+function basketProductsGenerator (userBasketArray) {
+   
+}
+
+function removeProductFromBasket (productId) {
+
+   
+}
+
+removeAllProductsBtn.addEventListener('click', function () {
     
-];
+})
 
-let usersContainer = document.getElementById("list")
-let pagesContainer = document.getElementById("pagination")
-
-let currentPage = 1
-let rowsCount = 5
-
-function displayUsersList(allUsersArray, usersContainer, rowsCount, currentPage){
-        usersContainer.innerHTML = ''
-        let endIndex = rowsCount *  currentPage
-        let startIndex = endIndex - rowsCount
-        let paginatedUsers = allUsersArray.slice(startIndex, endIndex)
-        paginatedUsers.forEach(element => {
-                let userElement = document.createElement('div')
-                userElement.classList.add('.item')
-                userElement.innerHTML = `${element.name} ${element.family}`
-                usersContainer.append(userElement)
-        });
-
+function calcTotalPrice (userBasketArray) {
+ 
 }
 
-
-function setupPagination(allUsersArray, pagesContainer, rowsCount){
-        pagesContainer.innerHTML =  ''
-        for(let i=1; i <= Math.ceil(allUsersArray.length/rowsCount); i++){
-
-                let button = paginationButtonGenerator(i)
-                pagesContainer.append(button)
-        }
-        
-        
+function updateProductCount (productId, newCount) {
+    
 }
-
-function paginationButtonGenerator(page){
-        let button = document.createElement('button')
-        if(currentPage === page){
-                button.classList.add('active')
-        }
-        button.innerHTML = page
-        return button
-}
-displayUsersList(listItems, usersContainer,  5, 1)
-setupPagination(listItems, pagesContainer, rowsCount)
