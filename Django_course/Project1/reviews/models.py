@@ -21,11 +21,15 @@ class Contributor(models.Model):
 
 
 class Book(models.Model):
+    PUBLICATION_STATUS = (("published", "published"), ("unpublished", "unpublished"))
     title = models.CharField(max_length=70)
     publication_date = models.DateField()
     isbn = models.CharField(max_length=20)
     publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE)
     contributors = models.ManyToManyField(Contributor, through="BookContributor")
+    status = models.CharField(
+        max_length=100, choices=PUBLICATION_STATUS, default="unpublished"
+    )
 
     def __str__(self):
         return self.title
