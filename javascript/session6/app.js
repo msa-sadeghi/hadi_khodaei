@@ -17,6 +17,7 @@ let userProxy = new Proxy(user,{
                 value = 18
             }
             target[property] =  value
+            return true
         }
     })
 
