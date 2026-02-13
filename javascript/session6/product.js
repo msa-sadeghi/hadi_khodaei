@@ -12,3 +12,4 @@ let productsArray = [
     { id: 3, title: 'Boots', price: 34, img: 'images/3.png', desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam atnobis, ipsum quas excepturi sed minus modi officia corrupti, veniamrem tempora, tenetur dicta nesciunt neque! Voluptate consequunturincidunt molestias? (Boots)' },
 ]
 let locationParams = new URLSearchParams(location.search)
+console.log(locationParams.get('id'))

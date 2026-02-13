@@ -41,3 +41,16 @@ class BookContributor(models.Model):
     role = models.CharField(
         max_length=30, help_text="Role of the contributor (e.g. Auther, Editor)"
     )
+
+
+class Contact(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    message = models.TextField()
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "تماس"
+        verbose_name_plural = "تماس ها"

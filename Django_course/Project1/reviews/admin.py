@@ -1,9 +1,10 @@
 from django.contrib import admin
-from .models import Book, Contributor, Publisher, BookContributor
+from .models import Book, Contributor, Publisher, BookContributor, Contact
 
 
 admin.site.register(Publisher)
 admin.site.register(Contributor)
+admin.site.register(Contact)
 
 
 class BookContributerInline(admin.StackedInline):
