@@ -1,11 +1,26 @@
-let productsContainer = document.querySelector('.container')
+let user = {
+    id:1,
+    firstName:'sara',
+    lastName : 'rezaei',
+    age:18
+}
 
-let productsArray = [
-    { id: 1, title: 'Sport Shoe', price: 53, img: 'images/1.png' },
-    { id: 2, title: 'Women Shoe', price: 81, img: 'images/2.png' },
-    { id: 3, title: 'Boots', price: 34, img: 'images/3.png' },
-]
+user.job = 'developer'
 
-productsArray.forEach(function (product) {
-    productsContainer.insertAdjacentHTML('beforeend', '<div class="product-card"><h1>' + product.title + '</h1><p>Lorem ipsum, or lipsum as it is sometimes known</p><div class="product-pic" style="background-image: url(' + product.img + ');"></div><div class="product-info"><div class="product-price">$' + product.price + '</div><a href="product.html?id=' + product.id + '" class="product-button">See More</a></div></div>')
-})
+
+let userProxy = new Proxy(user,{
+        get:function(target, property){
+            return property in target ? target[property] : null
+        },
+        set: function(target, property, value){
+            if(property === 'age' && value < 0){
+                value = 18
+            }
+            target[property] =  value
+        }
+    })
+
+
+userProxy.age = -12
+console.log(userProxy.age)
+
