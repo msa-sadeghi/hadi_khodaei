@@ -6,14 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="" method="GET">
-        <input type="text" name="name" value="blalalla">
-        <button>submit</button>
-    </form>
     <h1>All books</h1>
     {% for book in books %}
     <div>
-        <a href="">{{ book.title }}</a>
+        <a href="{% url 'reviews:book_detail' book.pk %}">{{ book.title }}</a>
         
     </div>
     {% endfor %}

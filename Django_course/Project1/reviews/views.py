@@ -10,7 +10,6 @@ def index(request):
 
 def book_detail(request, id):
     details = Book.objects.get(id=id)
-    print(details)
     return render(request, "reviews/book_details.html", {"details": details})
 
 
@@ -34,3 +33,5 @@ def contact_view(request):
 def create_book(request):
     form = BookForm()
     return render(request, "reviews/book_form.html", {"form": form})
+
+
