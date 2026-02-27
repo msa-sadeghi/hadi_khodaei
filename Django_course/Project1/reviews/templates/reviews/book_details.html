@@ -11,5 +11,6 @@
     <div>{{ details.isbn }}</div>
     <div>{{ details.publisher }}</div>
     <div>{{ details.contributors }}</div>
+    <a href="{% url 'reviews:edit_book' details.id %}">edit</a>
 </body>
 </html>

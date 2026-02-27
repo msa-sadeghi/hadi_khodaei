@@ -1,27 +1,54 @@
-let user = {
-    id:1,
-    firstName:'sara',
-    lastName : 'rezaei',
-    age:18
+async function getAllUsers(url) {
+    try{
+        const response = await fetch(url);
+        const users = await response.json()
+        renderUsers(users)
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+window.onload = ()=>{
+    getAllUsers('http://127.0.0.1:5000/')
+}
+const container = document.querySelector(".container")
+const renderUsers = (users)=>{
+    container.innerHTML = ''
+    users.forEach(user => {
+        const cardElement = document.createElement('div')
+        cardElement.classList.add('product-card')
+        const userId = document.createElement("span")
+        userId.classList.add('product-button')
+        userId.innerText = user.id
+        const userName = document.createElement("span")
+        userName.innerText = user.name
+        userName.classList.add('product-info')
+        const userRole = document.createElement("span")
+        userRole.innerText = user.role
+        userRole.classList.add('product-price')
+        cardElement.append(userId, userName, userRole)
+        container.append(cardElement)
+    });
 }
 
-user.job = 'developer'
+const addBtn = document.getElementById('addBtn')
+const nameElement = document.getElementById('name')
+const roleElement = document.getElementById('role')
 
-
-let userProxy = new Proxy(user,{
-        get:function(target, property){
-            return property in target ? target[property] : null
+addBtn.addEventListener('click', async () => {
+    const newUser = {
+        name : nameElement.value,
+        role : roleElement.value
+    }
+    const response = await fetch('http://127.0.0.1:5000/add-user',{
+        method:'POST',
+        headers :{
+            'Content-Type':'application/json'
         },
-        set: function(target, property, value){
-            if(property === 'age' && value < 0){
-                value = 18
-            }
-            target[property] =  value
-            return true
-        }
+        body:JSON.stringify(newUser)
     })
-
-
-userProxy.age = -12
-console.log(userProxy.age)
-
+    const users = await response.json()
+    renderUsers(users)
+    nameElement.value = ''
+    roleElement.value = ''
+})

@@ -17,7 +17,7 @@ class ContactForm(forms.Form):
 class BookForm(forms.ModelForm):
     class Meta:
         model = Book
-        fields = ("title", "publisher")
+        fields = ("title", "publisher", "publication_date")
         widgets = {
             "title": forms.TextInput(
                 attrs={"class": "form-control", "placeholder": "Enter title"}
