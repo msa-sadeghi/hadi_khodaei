@@ -31,4 +31,11 @@ def add_user():
     return jsonify(users), 201
 
 
+@app.route("/delete-user/<int:user_id>", methods=["DELETE"])
+def delete_user(user_id):
+    global users
+    users = [user for user in users if user["id"] != user_id]
+    return jsonify(users), 200
+
+
 app.run()

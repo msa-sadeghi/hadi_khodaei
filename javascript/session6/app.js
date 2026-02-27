@@ -26,7 +26,17 @@ const renderUsers = (users)=>{
         const userRole = document.createElement("span")
         userRole.innerText = user.role
         userRole.classList.add('product-price')
-        cardElement.append(userId, userName, userRole)
+        const deleteBtn = document.createElement("button")
+        deleteBtn.innerText = "delete"
+        deleteBtn.addEventListener('click',  async () => {
+            const response = await fetch(`http://127.0.0.1:5000/delete-user/${user.id}`,
+                {method : 'delete'}
+            )
+            const users = await response.json()
+            renderUsers(users)
+
+        })
+        cardElement.append(userId, userName, userRole, deleteBtn)
         container.append(cardElement)
     });
 }
