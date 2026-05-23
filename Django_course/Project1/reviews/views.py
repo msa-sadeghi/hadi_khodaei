@@ -9,7 +9,7 @@ def index(request):
 
 
 def book_detail(request, id):
-    details = Book.objects.get(id=id)
+    details = get_object_or_404(Book, id=id)
     return render(request, "reviews/book_details.html", {"details": details})
 
 
@@ -22,7 +22,7 @@ def contact_view(request):
             message = form.cleaned_data["message"]
             new_contact_object = Contact(name=name, email=email, message=message)
             new_contact_object.save()
-            return render(request, "reviews/success.html")
+            return redirect("reviews:contact_view")
     else:
         form = ContactForm()
 

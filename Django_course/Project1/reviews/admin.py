@@ -14,7 +14,7 @@ class BookContributerInline(admin.StackedInline):
 
 def mark_as_published(modeladmin, request, queryset):
     queryset.update(status="published")
-    mark_as_published.short_descriptions = "Mark selected books as published"
+    mark_as_published.short_description = "Mark selected books as published"
 
 
 @admin.register(Book)
